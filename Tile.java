@@ -29,8 +29,16 @@ public class Tile {
 
     public static class Bag{
 
-        private int[] AmountOfTiles = new int[26];
-        private Tile[] TilesIndex = new Tile[26];
+        private int[] AmountOfTiles;
+        private Tile[] TilesIndex;
+        private static Bag singleBag ;
+
+        private Bag(){
+            AmountOfTiles = new int[26];
+            TilesIndex= new Tile[26];
+
+        }
+
 
         private void initialAmountOfTiles(int[] arr){
             arr[0]=9; //initializing the arr that counts the letters
@@ -149,6 +157,18 @@ public class Tile {
             AmountOfTilesCopy = AmountOfTiles.clone();
             return AmountOfTilesCopy;
         }
+
+        public static Bag getBag(){
+
+            if (singleBag==null){ // // create object if it's not already created
+                singleBag = new Bag();
+            }
+                return singleBag; //// returns the singleton object
+            }
+
+        }
+
+
 
     }
 }
