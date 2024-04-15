@@ -115,6 +115,18 @@ public class Tile {
             return (int)c - 65;
         }
 
+        public Tile getTile(char c){
+            int index = charToIndex(c);
+            if(AmountOfTiles.length==0){
+                return null;
+            }
+            if(AmountOfTiles[index]!=0){
+                AmountOfTiles[index]--;
+                return TilesIndex[index];
+            }else{
+                return null;
+            }
+        }
 
 
     }
