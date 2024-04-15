@@ -142,9 +142,13 @@ public class Tile {
                 size += num;
             }
             return size;
-
         }
 
+        public int[] getQuantities(){
+            int [] AmountOfTilesCopy = new int[AmountOfTiles.length];
+            AmountOfTilesCopy = AmountOfTiles.clone();
+            return AmountOfTilesCopy;
+        }
 
     }
 }
