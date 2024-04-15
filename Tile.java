@@ -2,6 +2,7 @@ package test;
 
 
 import java.util.Objects;
+import java.util.Random;
 
 public class Tile {
     public final char letter;
@@ -31,7 +32,7 @@ public class Tile {
         private int[] AmountOfTiles = new int[26];
         private Tile[] TilesIndex = new Tile[26];
 
-        private void intialAmountOfTiles(int[] arr){
+        private void initialAmountOfTiles(int[] arr){
             arr[0]=9; //initializing the arr that counts the letters
             arr[1]=2;
             arr[2]=2;
@@ -60,7 +61,7 @@ public class Tile {
             arr[25]=1;
         }
 
-        private void intialTilesIndex(Tile[] t){
+        private void initialTilesIndex(Tile[] t){
             t[0]=new Tile('A',1); //initializing the arr of the scores
             t[1]=new Tile('B',3);
             t[2]=new Tile('C',3);
@@ -94,9 +95,21 @@ public class Tile {
             t[24]=new Tile('Y',4);
             t[25]=new Tile('Z',10);
 
-
         }
 
+        public Tile getRand(){
+            Random rand = new Random();
+            int randomNumber = rand.nextInt(25);
+            if (AmountOfTiles.length==0){
+                return null;
+            }
+            if(AmountOfTiles[randomNumber]!=0){
+                AmountOfTiles[randomNumber]--;
+                return TilesIndex[randomNumber];
+            }else{
+                return null;
+            }
+        }
 
 
     }
