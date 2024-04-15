@@ -111,6 +111,11 @@ public class Tile {
             }
         }
 
+        public int charToIndex(char c){ // converts char to index
+            return (int)c - 65;
+        }
+
+
 
     }
 }
