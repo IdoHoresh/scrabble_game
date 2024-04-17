@@ -144,9 +144,8 @@ public class Tile {
         public void put(Tile tile){ // method to add tiles to the bag
            if (size(AmountOfTiles)<98){
                AmountOfTiles[charToIndex(tile.letter)]++;
-           }else{
-               return;
            }
+
         }
 
         public int size(int[] arr){ // counts the number of total tiles
