@@ -2,11 +2,11 @@ package test;
 
 
 public class Board {
-    private int[][] GameBoard;
+    private Tile[][] GameBoard;
     private static Board singleBoard;
 
     private Board(){
-        GameBoard = new int[15][15];
+        GameBoard = new Tile[15][15];
     }
 
     public static Board getBoard(){
@@ -16,8 +16,18 @@ public class Board {
             return singleBoard;
     }
 
-    public Tiles[][] getTiles(){
-
+    public Tile[][] getTiles(){
+       Tile[][] BoardCopy = new Tile[15][15];
+       for (int i=0;i<14;i++){
+           for (int j=0;i<14;i++){
+               if (singleBoard.GameBoard[i][j]==null){
+                   BoardCopy[i][j] = null;
+               }else{
+                   BoardCopy[i][j] = singleBoard.GameBoard[i][j];
+               }
+           }
+       }
+       return BoardCopy;
     }
 
 
