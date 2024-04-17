@@ -36,7 +36,8 @@ public class Tile {
         private Bag(){
             AmountOfTiles = new int[26];
             TilesIndex= new Tile[26];
-
+            initialAmountOfTiles(AmountOfTiles);
+            initialTilesIndex (TilesIndex);
         }
 
 
@@ -105,39 +106,43 @@ public class Tile {
 
         }
 
+
+
         public Tile getRand(){
             Random rand = new Random();
             int randomNumber = rand.nextInt(25);
             if (AmountOfTiles.length==0){
                 return null;
             }
-            if(AmountOfTiles[randomNumber]!=0){
-                AmountOfTiles[randomNumber]--;
-                return TilesIndex[randomNumber];
-            }else{
+            if(AmountOfTiles[randomNumber]==0){
                 return null;
             }
+            AmountOfTiles[randomNumber]--;
+            return TilesIndex[randomNumber];
         }
 
         public int charToIndex(char c){ // converts char to index
             return (int)c - 65;
         }
 
-        public Tile getTile(char c){
+        public Tile getTile(char c) {
             int index = charToIndex(c);
-            if(AmountOfTiles.length==0){
+            if (AmountOfTiles.length == 0) {
                 return null;
             }
-            if(AmountOfTiles[index]!=0){
-                AmountOfTiles[index]--;
-                return TilesIndex[index];
-            }else{
-                return null;
+            if (index >= 0 && index < 26) {
+                if (AmountOfTiles[index] != 0) {
+                    AmountOfTiles[index]--;
+                    return TilesIndex[index];
+                } else {
+                    return null;
+                }
             }
+            return null;
         }
 
         public void put(Tile tile){ // method to add tiles to the bag
-           if (size(AmountOfTiles)<26){
+           if (size(AmountOfTiles)<98){
                AmountOfTiles[charToIndex(tile.letter)]++;
            }else{
                return;
